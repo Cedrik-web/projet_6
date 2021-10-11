@@ -13,8 +13,8 @@
         <div class="header">
             <h1>JustStreamIt</h1>
             <nav>
-                <button class="nav">Accueil</button>
-                <button class="nav">Catégories</button>
+                <button id="nav">Accueil</button>
+                <button id="cat" onclick="buttonCategory()">Catégories</button>
             </nav>
         </div>
         <div class="ecart">
@@ -23,73 +23,40 @@
     </header>
     <main>
         <!-- div du meilleur film -->
-        <div class="best_movie">
-            <video class="video" controls src=""></video>     
-            <div class="info_movie">
-                <form method="GET" action="https://www.imdb.com/title/tt9008642/"></form>
-                <h2></h2>
-                <button class="play">Play</button>
-            </div>   
+        <div id="best_movie">    
+            <button id="play">Play</button> 
         </div>
         <!-- div texte 1 pour les films les mieux notés -->
         <div class="presentation">
             <h3>Films les mieux notés</h3>
         </div>
         <!-- div avec un boxing pour la gestion des image de la categories nommée plus haut-->
-        <div class="boxing_movies">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
+        <div id="boxing_movies">
+         
         </div>
          <!-- div texte 2 pour la catégories 1 -->
          <div class="presentation">
             <h3>Catégories {}</h3>
         </div>
         <!-- div avec un boxing pour la gestion des image de la categories nommée plus haut-->
-        <div class="boxing_movies">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
+        <div id="boxing_movies2">
+            
         </div>
         <!-- div texte 3 pour la catégories 2 -->
         <div class="presentation">
             <h3>Catégories {}</h3>
         </div>
         <!-- div avec un boxing pour la gestion des image de la categories nommée plus haut-->
-        <div class="boxing_movies">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
+        <div id="boxing_movies3">
+            
         </div>
         <!-- div texte 4 pour la catégories 3 -->
         <div class="presentation">
             <h3>Catégories {}</h3>
         </div>
         <!-- div avec un boxing pour la gestion des image de la categories nommée plus haut-->
-        <div class="boxing_movies">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
+        <div id="boxing_movies4">
+
         </div>
     </main>
     <footer>
@@ -97,5 +64,6 @@
 
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>

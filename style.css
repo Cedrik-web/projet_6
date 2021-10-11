@@ -40,8 +40,28 @@ h1 {
     float: left;
     width: 60%;
 }
-h2 {
-    font-size: 3em;
+#titre {
+    color: white;
+    font-size: 7em;
+    margin-left: 1.5em;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+#years {
+    color: white;
+    font-size: 2em;
+    margin-left: 1.5em;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-transform: capitalize;
+}
+#description {
+    color: white;
+    font-size: 2em;
+    margin-left: 1.5em;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-transform: capitalize;
 }
 h3 {
     font-size: 2em;
@@ -51,8 +71,12 @@ h3 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-nav {
+#nav {
     position: relative;
+    top: 3.8em;
+}
+#cat {
+    position: absolute;
     top: 3.8em;
 }
 button {
@@ -60,15 +84,14 @@ button {
     padding-right: 3em;
     margin-right: 1em;
 }
-.best_movie {
-    background-color: darkgray;
+#best_movie {
     height: 30em;
     width: 100%;
 }
-.play {
+#play {
     position: relative;
-    top: 80px;
-    left: 100px;
+    top: 6em;
+    left: 1em;
     font-weight: bold;
     padding-right: 0.7em;
     padding-left: 0.7em;
@@ -80,18 +103,23 @@ button {
     height: 30em;
     width: 100%;
 }
-.info_movie {
+#info_movie {
     position: absolute;
     top: 5em;
     left: 10em;
     width: 25em;
     height: 15em;
 }
+#titreBest {
+    background-color: violet;
+    font-size: large;
+    color: white;
+}
 .presentation {
     width: 100%;
     height: 2em;
 }
-.boxing_movies {
+#boxing_movies {
     display: flexbox;    
     overflow-x: auto;
     overflow-y: hidden;
@@ -101,7 +129,37 @@ button {
     width: 100%;
     height: 20em;
 }
-.box{
+#boxing_movies2 {
+    display: flexbox;    
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: 20em;
+}
+#boxing_movies3 {
+    display: flexbox;    
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: 20em;
+}
+#boxing_movies4 {
+    display: flexbox;    
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    height: 20em;
+}
+#box{
     margin-top: 1.5%;
     display: table;
     margin-left: 0 auto;
@@ -109,8 +167,45 @@ button {
     background-color: darkgray;
     display: inline-block;
     width: 18em;
-    height: 90%;
+    height: 20em;
     border: solid black 2px;
+}
+#box2{
+    margin-top: 1.5%;
+    display: table;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    background-color: darkgray;
+    display: inline-block;
+    width: 18em;
+    height: 20em;
+    border: solid black 2px;
+}
+#box3{
+    margin-top: 1.5%;
+    display: table;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    background-color: darkgray;
+    display: inline-block;
+    width: 18em;
+    height: 20em;
+    border: solid black 2px;
+}
+#box4{
+    margin-top: 1.5%;
+    display: table;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    background-color: darkgray;
+    display: inline-block;
+    width: 18em;
+    height: 20em;
+    border: solid black 2px;
+}
+.boxImage {
+    background-position: center;
+    width: 100%;
 }
 .footer{
     width: 100%;
