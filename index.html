@@ -13,18 +13,52 @@
         <div class="header">
             <h1>JustStreamIt</h1>
             <nav>
-                <button id="nav">Accueil</button>
-                <button id="cat" onclick="buttonCategory()">Catégories</button>
+                <ul class="menu">
+                    <li id="boutonAcceuil"><a href="index.html">Accueil</a></li>
+                </ul>
+                <ul class="menu">    
+                    <li id="boutonCat"><a>Catégories</a>
+                        <ul class="submenu">
+                            <li><a href="index-action.html">Action</a></li>
+                            <li><a href="index-adult.html">Adult</a></li>
+                            <li><a href="index-adventure.html">Adventure</a></li>
+                            <li><a href="index-animation.html">Animation</a></li>
+                            <li><a href="index-biography.html">Biography</a></li>
+                            <li><a href="index-comedy.html">Comedy</a></li>
+                            <li><a href="index-crime.html">Crime</a></li>
+                            <li><a href="index-documentary.html">Documentary</a></li>
+                            <li><a href="index-drama.html">Drama</a></li>
+                            <li><a href="index-familly.html">Familly</a></li>
+                            <li><a href="index-fantasy.html">Fantasy</a></li>
+                            <li><a href="index-film-noir.html">Film noir</a></li>
+                            <li><a href="index-history.html">History</a></li>
+                            <li><a href="index-horror.html">Horror</a></li>
+                            <li><a href="index-music.html">Music</a></li>
+                            <li><a href="index-musical.html">Musical</a></li>
+                            <li><a href="index-mystery.html">Mystery</a></li>
+                            <li><a href="index-news.html">News</a></li>
+                            <li><a href="index-reality-tv.html">Reality TV</a></li>
+                            <li><a href="index-romance.html">Romnance</a></li>
+                            <li><a href="index-science-fiction.html">Science Fiction</a></li>
+                            <li><a href="index-sport.html">Sport</a></li>
+                            <li><a href="index-triller.html">Triller</a></li>
+                            <li><a href="index-war.html">War</a></li>
+                            <li><a href="index-western.html">Western</a></li>
+                        </ul>
+                    </li>    
+                </ul>
             </nav>
         </div>
         <div class="ecart">
-
         </div>
     </header>
     <main>
         <!-- div du meilleur film -->
-        <div id="best_movie">    
-            <button id="play">Play</button> 
+        <div id="best_movie">
+            <img id="bestMovies" src="image/jacket.jpg"> 
+            <div id="overFlow">  
+                <button id="play">Play</button> 
+            </div>     
         </div>
         <!-- div texte 1 pour les films les mieux notés -->
         <div class="presentation">

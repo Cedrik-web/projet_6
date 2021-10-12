@@ -31,7 +31,7 @@ function AddElementMovies() {
 	var displayPrevious = document.getElementById('boxing_movies');
 	
 	var createDiv = document.createElement("div");
-	createDiv.innerHTML = "<div id='box'></div>"
+	createDiv.innerHTML = "<div class='box'></div>"
 	displayPrevious.appendChild(createDiv);
 }
 
@@ -39,7 +39,7 @@ function AddElementMovies2() {
 	var displayPrevious = document.getElementById('boxing_movies2');
 	
 	var createDiv = document.createElement("div");
-	createDiv.innerHTML = "<div id='box2'></div>"
+	createDiv.innerHTML = "<div class='box'></div>"
 	displayPrevious.appendChild(createDiv);
 }
 
@@ -47,7 +47,7 @@ function AddElementMovies3() {
 	var displayPrevious = document.getElementById('boxing_movies3');
 	
 	var createDiv = document.createElement("div");
-	createDiv.innerHTML = "<div id='box3'></div>"
+	createDiv.innerHTML = "<div class='box'></div>"
 	displayPrevious.appendChild(createDiv);
 }
 
@@ -55,15 +55,6 @@ function AddElementMovies4() {
 	var displayPrevious = document.getElementById('boxing_movies4');
 	
 	var createDiv = document.createElement("div");
-	createDiv.innerHTML = "<div id='box4'></div>"
+	createDiv.innerHTML = "<div class='box'></div>"
 	displayPrevious.appendChild(createDiv);
-}
-function buttonCategory(){
-	var Cat = document.getElementById('cat');
-	Cat.innerHTML = "";
-
-	var boxCat = document.createElement("div");
-	boxCat.setAttribute("id", "caterogy");
-	boxCat.innerHTML = "<ul><li>category 1</li><li>category 2</li><li>category 3</li><li>category 4</li><li>category 5</li><li>category 6</li></il>";
-	Cat.appendChild(boxCat);
 }

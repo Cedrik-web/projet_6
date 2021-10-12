@@ -7,14 +7,6 @@ body {
     margin: 0;
     padding: 0;
 }
-.nav:hover {
-    background-color: dimgray;
-    border-radius: 5px;
-}
-.play:hover {
-    background-color: dimgray;
-    border-radius: 25px;
-}
 .gradientcolor {
     height: 100%;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -41,13 +33,20 @@ h1 {
     width: 60%;
 }
 #titre {
-    color: white;
+    position: absolute;
+    z-index: 5;
+    top: 50px;
+    color:white;
     font-size: 7em;
     margin-left: 1.5em;
     margin-bottom: 0;
     text-transform: uppercase;
 }
 #years {
+    position: absolute;
+    z-index: 5;
+    top: 270px;
+    left: 120px;
     color: white;
     font-size: 2em;
     margin-left: 1.5em;
@@ -56,12 +55,33 @@ h1 {
     text-transform: capitalize;
 }
 #description {
-    color: white;
+    position: absolute;
+    z-index: 5;
+    top: 320px;
+    left: 120px;
+    color:white;
     font-size: 2em;
     margin-left: 1.5em;
     margin-bottom: 0;
     margin-top: 0;
     text-transform: capitalize;
+}
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#best_movie {
+    height: 30em;
+    width: 100%;
+}
+#overFlow {
+    position: absolute;
+    z-index: 4;
+    top: 105px;
+    width: 100%;
+    height: 30em;
+    background-color: rgba(65, 61, 61, 0.452);
 }
 h3 {
     font-size: 2em;
@@ -71,25 +91,80 @@ h3 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-#nav {
-    position: relative;
-    top: 3.8em;
+nav > ul::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+nav a {
+    display: inline-block;
+    text-decoration: none;
+}
+.menu {
+    float: left;
+}
+.submenu {
+    display: none;
+}
+#boutonAcceuil {
+    width: 100px;
+    position:relative;
+    top: 2em;
+    background-color: red;
+    border: solid darkgray 2px;
+    list-style-type: none;
+    padding-left: 38px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+}
+#boutonCat {
+    width: 100px;
+    position:relative;
+    top: 2em;
+    background-color: red;
+    border: solid darkgray 2px;
+    list-style-type: none;
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+}
+#boutonCat:hover {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+nav li:hover .submenu{
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    top: 100%;
+    left: -2px;
+    padding: 0;
+    padding-bottom: 2px;
+    z-index: 1000;
+    background-color: red;
+    border: solid darkgray 2px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px ;
+    font-size: small;
+    border-top: none;
 }
 #cat {
     position: absolute;
+    padding-left: 1.5em;
+    width: 150px;
     top: 3.8em;
 }
-button {
-    font-size: large;
-    padding-right: 3em;
-    margin-right: 1em;
-}
-#best_movie {
-    height: 30em;
-    width: 100%;
-}
 #play {
-    position: relative;
+    position: absolute;
     top: 6em;
     left: 1em;
     font-weight: bold;
@@ -98,26 +173,6 @@ button {
     background-color: red;
     font-size: 2em;
     border-radius: 35px;
-}
-.video {
-    height: 30em;
-    width: 100%;
-}
-#info_movie {
-    position: absolute;
-    top: 5em;
-    left: 10em;
-    width: 25em;
-    height: 15em;
-}
-#titreBest {
-    background-color: violet;
-    font-size: large;
-    color: white;
-}
-.presentation {
-    width: 100%;
-    height: 2em;
 }
 #boxing_movies {
     display: flexbox;    
@@ -159,40 +214,7 @@ button {
     width: 100%;
     height: 20em;
 }
-#box{
-    margin-top: 1.5%;
-    display: table;
-    margin-left: 0 auto;
-    margin-right: 0 auto;
-    background-color: darkgray;
-    display: inline-block;
-    width: 18em;
-    height: 20em;
-    border: solid black 2px;
-}
-#box2{
-    margin-top: 1.5%;
-    display: table;
-    margin-left: 0 auto;
-    margin-right: 0 auto;
-    background-color: darkgray;
-    display: inline-block;
-    width: 18em;
-    height: 20em;
-    border: solid black 2px;
-}
-#box3{
-    margin-top: 1.5%;
-    display: table;
-    margin-left: 0 auto;
-    margin-right: 0 auto;
-    background-color: darkgray;
-    display: inline-block;
-    width: 18em;
-    height: 20em;
-    border: solid black 2px;
-}
-#box4{
+.box{
     margin-top: 1.5%;
     display: table;
     margin-left: 0 auto;
