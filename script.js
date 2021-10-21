@@ -1,218 +1,132 @@
 AddElementBest();
 
-
 AddElementCategoryBest();
-AddElementCategoryAction();
-AddElementCategoryAdulte();
-AddElementCategoryAdventure();
-AddElementCategoryAnimation();
-AddElementCategoryBiography();
-AddElementCategoryComedy();
-AddElementCategoryCrime();
-AddElementCategoryDocumentary();
-AddElementCategoryDrama();
-AddElementCategoryFamilly();
 
+AddElementCategoryAdventure();
+AddElementCategoryAction();
+AddElementCategoryComedy();
+
+function getBestTitles(movies) {
+	
+	fetch("http://localhost:8000/api/v1/titles/1508669")
+		.then((res) => res.json())
+		.then((data) => {
+			const { results } = data;
+			const categoryAction = results((movie) => {
+
+					var bestTitle = document.createElement('h2');
+					bestTitle.setAttribute("id", "titre");
+					bestTitle.innerText = movie.title;
+				return bestTitle	
+				});	
+		categoryAction.bestTitle((movie) => movies.appendChild(movie));
+		});		
+}
+
+function getBestYears(movies) {
+
+	fetch("http://localhost:8000/api/v1/titles/?year=2010&min_year=&max_year=&imdb_score=9.6&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
+	.then((res) => res.json())
+	.then((data) => {
+		const { results } = data;
+		const categoryAction = results.map((movie) => {
+					var bestYears = document.createElement("h2");
+					bestYears.setAttribute("id", "years");
+					bestYears.innerText = movie.year;
+				return bestYears;
+				});
+		categoryAction.forEach((movie) => movies.appendChild(movie));
+		});	
+}
+
+function getBestDescription(movies) {
+
+	fetch("http://localhost:8000/api/v1/titles/?year=2010&min_year=&max_year=&imdb_score=9.6&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
+	.then((res) => res.json())
+	.then((data) => {
+		const { results } = data;
+		const categoryAction = results.map((movie) => {
+					var bestDescription = document.createElement("h2");
+					bestDescription.setAttribute("id", "description");
+					bestDescription.innerText = movie.actors;
+				return bestDescription;
+				});
+		categoryAction.forEach((movie) => movies.appendChild(movie));
+		});		
+}
+
+function getBestImage(movies) {
+
+	fetch("http://localhost:8000/api/v1/titles/?year=2010&min_year=&max_year=&imdb_score=9.6&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
+	.then((res) => res.json())
+	.then((data) => {
+		const { results } = data;
+		const categoryAction = results.map((movie) => {
+					var bestImage = document.createElement("img");
+					bestImage.setAttribute("id", "imageCouvBest");
+					const image = movie.image_url;
+					bestImage.setAttribute("src", image );
+				return bestImage;
+				});
+		categoryAction.forEach((movie) => movies.appendChild(movie));
+		});	
+}
 
 function AddElementBest() {
 	var movies = document.getElementById('best_movie');
 
-	fetch("http://localhost:8000/api/v1/titles/?year=2010&min_year=&max_year=&imdb_score=9.6&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryAction = results.map((movie) => {
-
-				var bestTitle = document.createElement('h2');
-				bestTitle.setAttribute("id", "titre");
-				bestTitle.innerText = movie.title;
-				
-				return bestTitle;
-			});
-			categoryAction.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?year=2010&min_year=&max_year=&imdb_score=9.6&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
-		.then((data) => {
-			const { results } = data;
-			const categoryAction = results.map((movie) => {
-
-				var bestYears = document.createElement("h2");
-				bestYears.setAttribute("id", "years");
-				bestYears.innerText = movie.year;
-
-				return bestYears;
-			});
-			categoryAction.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?year=2010&min_year=&max_year=&imdb_score=9.6&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryAction = results.map((movie) => {
-
-				var bestDescription = document.createElement("h2");
-				bestDescription.setAttribute("id", "description");
-				bestDescription.innerText = movie.actors;
-
-				return bestDescription;
-			});
-			categoryAction.forEach((movie) => movies.appendChild(movie));	
-		});
-	fetch("http://localhost:8000/api/v1/titles/?year=2010&min_year=&max_year=&imdb_score=9.6&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryAction = results.map((movie) => {
-
-				var bestImage = document.createElement("img");
-				bestImage.setAttribute("id", "imageCouvBest");
-				const image = movie.image_url;
-				bestImage.setAttribute("src", image );
-
-				return bestImage;
-			});
-			categoryAction.forEach((movie) => movies.appendChild(movie));	
-		});
+	var el = document.createElement("div");
+	el.setAttribute("id", "bestDiv");
+		getBestTitles(movies);
+		getBestYears(movies);
+		getBestDescription(movies);
+		getBestImage(movies);
+	return el;		
 }
 
-
 function AddElementCategoryBest() {
-	var movies = document.getElementById("best");
+	var movies = document.getElementById("btnBest");
 
-	fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=9.6&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
+	fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=9&imdb_score_max=9.7&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
 		.then((res) => res.json())
 		.then((data) => {
 			const { results } = data;
-			const categoryBest = results.map((movie) => {
+			const categoryBest = results.map((movie, index) => {
 
 				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
+				categoryImage.setAttribute("id", `box${index}`);
+				categoryImage.setAttribute("class", "boxing");
 				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
+				categoryImage.innerHTML = `<img src="${img}">`;
+				myModal();
 				return categoryImage;
 			});
 			categoryBest.forEach((movie) => movies.appendChild(movie));
 		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=&genre_contains=&imdb_score=&imdb_score_max=9.6&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=2&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryAction = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img2 = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img2}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryAction.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=&genre_contains=&imdb_score=&imdb_score_max=9.6&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=3&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryAction = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img2 = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img2}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryAction.forEach((movie) => movies.appendChild(movie));
-		});	
 }
 
 function AddElementCategoryAction() {
-	var movies = document.getElementById("action");
+	var movies = document.getElementById("btnAction");
 
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=action&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
+	fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=action&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
 		.then((res) => res.json())
 		.then((data) => {
 			const { results } = data;
 			const categoryAction = results.map((movie) => {
-
-				var categoryActionImage = document.createElement("div");
-				categoryActionImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryActionImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryActionImage;
-			});
-			categoryAction.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=action&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=2&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryAction = results.map((movie) => {
-
-				var categoryActionImage = document.createElement("div");
-				categoryActionImage.setAttribute("id", "box");
-				const img2 = movie.image_url;
-				categoryActionImage.innerHTML = `<a href="#"><img src="${img2}"></a>`;
-				
-				return categoryActionImage;
-			});
-			categoryAction.forEach((movie) => movies.appendChild(movie));
-		});	
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=action&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=3&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryAction = results.map((movie) => {
-
-				var categoryActionImage = document.createElement("div");
-				categoryActionImage.setAttribute("id", "box");
-				const img2 = movie.image_url;
-				categoryActionImage.innerHTML = `<a href="#"><img src="${img2}"></a>`;
-				
-				return categoryActionImage;
-			});
-			categoryAction.forEach((movie) => movies.appendChild(movie));
-		});	
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=action&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=4&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryAction = results.map((movie) => {
-
-				var categoryActionImage = document.createElement("div");
-				categoryActionImage.setAttribute("id", "box");
-				const img2 = movie.image_url;
-				categoryActionImage.innerHTML = `<a href="#"><img src="${img2}"></a>`;
-				
-				return categoryActionImage;
-			});
-			categoryAction.forEach((movie) => movies.appendChild(movie));
-		});			
-}
-
-function AddElementCategoryAdulte() {
-	var movies = document.getElementById("adulte");
-
-	fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=adult&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryAdulte = results.map((movie) => {
 
 				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
+				categoryImage.setAttribute("class", "boxing");
 				const img = movie.image_url;
 				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
+				myModalAction();
 				return categoryImage;
 			});
-			categoryAdulte.forEach((movie) => movies.appendChild(movie));
+			categoryAction.forEach((movie) => movies.appendChild(movie));
 		});
 }
 
 function AddElementCategoryAdventure() {
-	var movies = document.getElementById("adventure");
+	var movies = document.getElementById("btnAdventure");
 
 	fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=adventure&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
 		.then((res) => res.json())
@@ -221,194 +135,18 @@ function AddElementCategoryAdventure() {
 			const categoryAdventure = results.map((movie) => {
 
 				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
+				categoryImage.setAttribute("class", "boxing");
 				const img = movie.image_url;
 				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
+				myModalAdventure();
 				return categoryImage;
 			});
 			categoryAdventure.forEach((movie) => movies.appendChild(movie));
 		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=adventure&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=2&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryAdventure = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryAdventure.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=adventure&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=3&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryAdventure = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryAdventure.forEach((movie) => movies.appendChild(movie));
-		});	
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=adventure&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=4&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryAdventure = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryAdventure.forEach((movie) => movies.appendChild(movie));
-		});		
 }
-
-function AddElementCategoryAnimation() {
-	var movies = document.getElementById("animation");
-
-	fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=animation&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=animation&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=2&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=animation&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=3&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});	
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=animation&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=4&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});		
-}
-
-function AddElementCategoryBiography() {
-	var movies = document.getElementById("biography");
-
-	fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=biography&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=biography&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=2&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=biography&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=3&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=biography&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=4&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});		
-}
-
 
 function AddElementCategoryComedy() {
-	var movies = document.getElementById("comedy");
+	var movies = document.getElementById("btnComedy");
 
 	fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=comedy&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
 		.then((res) => res.json())
@@ -417,272 +155,126 @@ function AddElementCategoryComedy() {
 			const categoryMovie = results.map((movie) => {
 
 				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
+				categoryImage.setAttribute("class", "boxing");
 				const img = movie.image_url;
 				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=comedy&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=2&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=comedy&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=3&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=biography&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=4&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});		
-}
-
-function AddElementCategoryCrime() {
-	var movies = document.getElementById("crime");
-
-	fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=crime&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&crime=comedy&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=2&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=crime&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=3&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=biography&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=4&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});		
-}
-
-function AddElementCategoryDocumentary() {
-	var movies = document.getElementById("documentary");
-
-	fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=documentary&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
-
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
+				myModalComedy();
 				return categoryImage;
 			});
 			categoryMovie.forEach((movie) => movies.appendChild(movie));
 		});	
 }
 
-function AddElementCategoryDrama() {
-	var movies = document.getElementById("drama");
 
-	fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=drama&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
+function myModal() {
+	var modal = document.getElementById("myModal");
 
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=drama&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=2&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
+	var onBouton = document.getElementById("btnBest");
 
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=drama&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=3&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
+	var span = document.getElementsByClassName("close") [0];
 
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=biography&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=4&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
+	onBouton.onclick = function() {
+		modal.style.display = "block";
+	}
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
 
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});		
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
 }
 
-function AddElementCategoryFamilly() {
-	var movies = document.getElementById("familly");
+function myModalComedy() {
+	var modal = document.getElementById("myModal");
 
-	fetch("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=familly&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
+	var onBouton = document.getElementById("btnComedy");
 
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=familly&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=2&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
+	var span = document.getElementsByClassName("close") [0];
 
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=familly&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=3&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
+	onBouton.onclick = function() {
+		modal.style.display = "block";
+	}
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
 
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});
-	fetch("http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=biography&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=4&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=")
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const categoryMovie = results.map((movie) => {
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+}
+function myModalAction() {
+	var modal = document.getElementById("myModal");
 
-				var categoryImage = document.createElement("div");
-				categoryImage.setAttribute("id", "box");
-				const img = movie.image_url;
-				categoryImage.innerHTML = `<a href="#"><img src="${img}"></a>`;
-				
-				return categoryImage;
-			});
-			categoryMovie.forEach((movie) => movies.appendChild(movie));
-		});		
+	var onBouton = document.getElementById("btnAction");
+
+	var span = document.getElementsByClassName("close") [0];
+
+	onBouton.onclick = function() {
+		modal.style.display = "block";
+	}
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+}
+function myModalAdventure() {
+	var modal = document.getElementById("myModal");
+
+	var onBouton = document.getElementById("btnAdventure");
+
+	var span = document.getElementsByClassName("close") [0];
+
+	onBouton.onclick = function() {
+		modal.style.display = "block";
+	}
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+}
+function getAddTitle(){
+	var addTitle = document.createElement("h2");
+	addTitle.innerText = "titre test";
+	return addTitle;
+}
+
+function getAddYear(){
+	var addYears = document.createElement("p");
+	addYears.innerText = "paragraphe test";
+	return addYears;
+}
+
+function getAddPic() {
+	var addPic = document.createElement("img");
+	addPic.innerHTML = movie.image_url;
+	return addPic;
+}
+
+
+function dataModal() {
+	var surveillance = document.getElementById("corpsModal");
+
+	var elementsDiv = document.createElement("div");
+	elementsDiv.setAttribute("id", "essaiDiv");
+		getAddTitle(surveillance);
+		getAddYear(surveillance);
+		getAddPic(surveillance);
+	surveillance.appendChild(elementsDiv);		
+
+	document.body.insertBefore(elementsDiv, surveillance);
 }
