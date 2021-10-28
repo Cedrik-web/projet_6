@@ -275,7 +275,10 @@ img {
     left: 150px;
 }
 
-
+.imageModal {
+    width: 400px;
+    height: auto;
+}
  /* The Modal (background) */
  .modal {
     display: none; /* Hidden by default */
@@ -304,10 +307,7 @@ img {
     text-decoration: none;
     cursor: pointer;
 } 
-.imageModal {
-    position: relative;
-    width: 100%;
-}
+s
 /*     Modal Header    */
 .modal-header {
     padding: 2px 16px;
