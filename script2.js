@@ -53,482 +53,359 @@ function AddElementBest(link) {
 //best
 function callBest() {
 	var link = 	("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=9.4&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=");
-	var index = ("best");
-	var trigger = ("best");
-	addElementDiv(link, index, trigger);	
+	var cat = ("best");
+	addElementDivBest(cat, link);	
 }
 //best favori
 function callBestFavori() {
 	var link = 	("http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=9.4&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=");
-	var index = ("best");
-	var trigger = ("best");
+	var cat = ("best");
 	findTitleFavori(link);
-	addElementDiv(link, index, trigger);	
+	addElementDivBest(cat, link);	
 }
 
 //action ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //action
 function callAction() {
 	var cat = ("action");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //action favori
 function callActionFavori() {
 	var cat = ("action");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //adult ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //adult
 function callAdult() {
 	var cat = ("adult");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //adult favori
 function callAdultFavori() {
 	var cat = ("adult");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //adventure ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //adventue
 function callAdventure() {
 	var cat = ("adventure");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //adventue favori
 function callAdventureFavori() {
 	var cat = ("adventure");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //animation ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //animation
 function callAnimation() {
 	var cat = ("animation");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //animation favori
 function callAnimationFavori() {
 	var cat = ("animation");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //biography ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //biography
 function callBiography() {
 	var cat = ("biography");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //biography favori
 function callBiographyFavori() {
 	var cat = ("biography");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //comedy ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //comedy
 function callComedy() {
 	var cat = ("comedy");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //comedy favori
 function callComedyFavori() {
 	var cat = ("comedy");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //crime ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //crime
 function callCrime() {
 	var cat = ("crime");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //crime favori
 function callCrimeFavori() {
 	var cat = ("crime");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //documentary ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //documentary
 function callDocumentary() {
 	var cat = ("documentary");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //documentary favori
 function callDocumentaryFavori() {
 	var cat = ("documentary");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //drame ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //drame
 function callDrama() {
 	var cat = ("drama");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //drame favori
 function callDramaFavori() {
 	var cat = ("drama");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //familly ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //familly
 function callFamilly() {
 	var cat = ("familly");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //familly favori
 function callFamillyFavori() {
 	var cat = ("familly");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //fantasy ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //fantasy
 function callFantasy() {
 	var cat = ("fantasy");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //fantasy favori
 function callFantasyFavori() {
 	var cat = ("fantasy");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //film noir ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //film noir
 function callFilmNoir() {
 	var cat = ("film-noir");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //film noir favori
 function callFilmNoirFavori() {
 	var cat = ("film-noir");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //history ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //history
 function callHistory() {
 	var cat = ("history");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //history favori
 function callHistoryFavori() {
 	var cat = ("history");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //horror ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //horror
 function callHorror() {
 	var cat = ("horror");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //horror favori
 function callHorrorFavori() {
 	var cat = ("horror");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //music ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //music
 function callMusic() {
 	var cat = ("music");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //music favori
 function callMusicFavori() {
 	var cat = ("music");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //musical ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //musical
 function callMusical() {
 	var cat = ("musical");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //musical favori
 function callMusicalFavori() {
 	var cat = ("musical");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //mystery ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //mystery
 function callMystery() {
 	var cat = ("mystery");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //mystery favori
 function callMysteryFavori() {
 	var cat = ("mystery");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //news ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //news
 function callNews() {
 	var cat = ("news");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //news favori
 function callNewsFavori() {
 	var cat = ("news");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //reality-tv ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //reality-tv
 function callRealityTv() {
 	var cat = ("reality-tv");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //reality-tv favori
 function callRealityTvFavori() {
 	var cat = ("reality-tv");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //romance ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //romance
 function callRomance() {
 	var cat = ("romance");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //romance favori
 function callRomanceFavori() {
 	var cat = ("romance");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //science-fiction ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //science-fiction
 function callScienceFiction() {
 	var cat = ("sci-fi");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //science-fiction favori
 function callScienceFictionFavori() {
 	var cat = ("sci-fi");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //sport ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //sport
 function callSport() {
 	var cat = ("sport");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //sport favori
 function callSportFavori() {
 	var cat = ("sport");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //triller ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //triller
 function callTriller() {
 	var cat = ("triller");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //triller favori
 function callTrillerFavori() {
 	var cat = ("triller");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
+
 //war ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //war
 function callWar() {
 	var cat = ("war");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //war favori
 function callWarFavori() {
 	var cat = ("war");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
 //western ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //western
 function callWestern() {
 	var cat = ("western");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	addElementDiv(link, index, trigger);
+	addElementDiv(cat);
 }
 //western favori
 function callWesternFavori() {
 	var cat = ("western");
-	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
-	var index = (cat);
-	var trigger = (cat);
-	findTitleFavori(link);
-	addElementDiv(link, index, trigger);
+	addElementDivFavori(cat);
 }
 
 //gestion de l'affichage de la categorie demander et des fleches---------------------------------------------------------------------------------------------------------------------------
-function addElementDiv(link, index, trigger) {
+// gestion des appels de fonction pour les categories
+function addElementDiv(cat) {
+	var trigger = (cat);
 	var movies = document.getElementById(trigger);
 	var elementDiv = document.createElement("div");
 	
 	elementDiv.setAttribute("class", "categorie");
 		getElementFlechePreviousDiv(elementDiv);
-		AddElementCategory(elementDiv, link, index);
+		AddElementCategory(elementDiv, cat);
 		getElementFlecheNextDiv(elementDiv);
 	movies.appendChild(elementDiv);
 }
-function AddElementCategory(el, link, ind) {
+
+function addElementDivFavori(cat) {
+	var trigger = (cat);
+	var movies = document.getElementById(trigger);
+	var elementDiv = document.createElement("div");
+	
+	elementDiv.setAttribute("class", "categorie");
+		getElementFlechePreviousDiv(elementDiv);
+		AddElementCategoryFavori(elementDiv, cat);
+		getElementFlecheNextDiv(elementDiv);
+	movies.appendChild(elementDiv);
+}
+
+// gestion des appels de fonction pour les meilleurs films
+function addElementDivBest(cat, link) {
+	var trigger = (cat);
+	var movies = document.getElementById(trigger);
+	var elementDiv = document.createElement("div");
+	
+	elementDiv.setAttribute("class", "categorie");
+		getElementFlechePreviousDiv(elementDiv);
+		AddElementCategoryBest(elementDiv, cat, link);
+		getElementFlecheNextDiv(elementDiv);
+	movies.appendChild(elementDiv);
+}
+
+// fonction de demande de requette à l'api pour les meilleur films
+function AddElementCategoryBest(el, cat, link) {
+	var ind = (cat);
+	
 	var movies = document.createElement("div");
 	movies.setAttribute("class", "affichage");
 
@@ -552,6 +429,66 @@ function AddElementCategory(el, link, ind) {
 		});	
 	el.appendChild(movies);	
 }
+
+// fonction de demande de requette à l'api pour les categories et pour la requette d'un objet aleatoire pour affichage baniere
+function AddElementCategory(el, cat) {
+	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
+	var ind = (cat);
+	
+	var movies = document.createElement("div");
+	movies.setAttribute("class", "affichage");
+
+	fetch(link)
+		.then((res) => res.json())
+		.then((data) => {
+			const { results } = data;
+			const categoryBest = results.map((movie, index) => {
+				
+				var categoryImage = document.createElement("a");
+				var id = (`${ind}${index}`);
+				categoryImage.setAttribute("id", `btnBest${id}`);
+				categoryImage.setAttribute("data-popup-trigger", `${movie.url}`);
+				categoryImage.setAttribute("class", "boxing");
+					getCategoryImage(movie, categoryImage, id);
+					getElementDivModal(categoryImage, id);
+				movies.appendChild(categoryImage);
+			    myModal(movie.url, id);
+			});
+			categoryBest.forEach((movie) => movies.appendChild(movie));
+		});	
+	el.appendChild(movies);	
+}
+
+function AddElementCategoryFavori(el, cat) {
+	var link = (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`);
+	var ind = (cat);
+	findTitleFavori(link);
+	var movies = document.createElement("div");
+	movies.setAttribute("class", "affichage");
+
+	fetch(link)
+		.then((res) => res.json())
+		.then((data) => {
+			const { results } = data;
+			const categoryBest = results.map((movie, index) => {
+				console.log("array:", categoryBest);
+				
+				var categoryImage = document.createElement("a");
+				var id = (`${ind}${index}`);
+				categoryImage.setAttribute("id", `btnBest${id}`);
+				categoryImage.setAttribute("data-popup-trigger", `${movie.url}`);
+				categoryImage.setAttribute("class", "boxing");
+					getCategoryImage(movie, categoryImage, id);
+					getElementDivModal(categoryImage, id);
+				movies.appendChild(categoryImage);
+			    myModal(movie.url, id);
+			});
+			categoryBest.forEach((movie) => movies.appendChild(movie));
+		});	
+	el.appendChild(movies);	
+}
+
+// fonction de requette sur Array pour en extraire un objet
 function findTitleFavori(links) {
 	console.log("link1", links);
 	fetch(links)
@@ -637,12 +574,13 @@ function myModal(movie, id) {
     onBouton.onclick = function() {
 		modal.classList.add("is-visible");
         console.log(modal);
-		dataModal(movie, id);
+		console.log("ouverture modal");
+	//	dataModal(movie, id);
 	}
 
 	span.onclick = function() {
-		modal.style.display = "none";
-        console.log(modal);
+//		modal.style.display = "none";
+        console.log("clické sur fermé");
 	}
 
     window.onclick = function(event) {
@@ -735,3 +673,12 @@ function getDisplayPrevious(el, data) {
 }
 
 // appel des fonctions---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ (setTimeout(function() {
+	callBestFavori();
+	console.log("reload");
+//	location.reload();
+  }, 3000))()
+  callAction();
+  callAdventure();
+  callComedy();
+  callCrime();

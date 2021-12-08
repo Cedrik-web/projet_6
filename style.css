@@ -2,6 +2,8 @@
     --primary: #252424;
     --secondary: #570f0f;
 }
+
+/*---------------------------------------------------------------------------------------body---------------------------------------------------------------------------------------------*/
 body {
     background-image: url(image/fond_carbone.jpg);
     margin: 0;
@@ -11,18 +13,6 @@ body {
     height: 100%;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
 }
-.header {
-    z-index: 10;
-    position: fixed ;
-    width: 100%;
-    height: 100px;
-    border: solid black 2px;
-    background-image: url(image/carbone_header.jpg);
-}
-.ecart {
-    width: 100%;
-    height: 100px;
-}
 h1 {
     position: relative;
     display: inline-block;
@@ -31,64 +21,6 @@ h1 {
     left: 5.3em;
     float: left;
     width: 60%;
-}
-
-#titre {
-    position: absolute;
-    z-index: 5;
-    top: 90px;
-    left: 70px;
-    color:white;
-    font-size: 4em;
-    margin-left: 1.5em;
-    margin-bottom: 0;
-    text-transform: uppercase;
-}
-#years {
-    position: absolute;
-    z-index: 5;
-    top: 270px;
-    left: 120px;
-    color: white;
-    font-size: 2em;
-    margin-left: 1.5em;
-    margin-bottom: 0;
-    margin-top: 0;
-    text-transform: capitalize;
-}
-#description {
-    position: absolute;
-    z-index: 5;
-    top: 350px;
-    left: 145px;
-    color:white;
-    font-size: 1em;
-    margin-left: 1.5em;
-    margin-bottom: 0;
-    margin-top: 0;
-    text-transform: capitalize;
-}
-#imageCouvBest {
-    position: relative;
-    left: 80em;
-    height: 485px;
-    width: 350px;
-}
-#best_movie {
-    height: 30em;
-    width: 100%;
-}
-#bestDiv {
-    height: 100%;
-    width: 100%;
-}
-#overFlow {
-    position: absolute;
-    z-index: 4;
-    top: 105px;
-    width: 100%;
-    height: 30em;
-    background-color: rgba(65, 61, 61, 0.452);
 }
 h3 {
     position: relative;
@@ -101,6 +33,16 @@ h3 {
     -webkit-text-fill-color: transparent;
     margin-top: 0;
     margin-bottom: 0;
+}
+
+/*-------------------------------------------------------------------------header--------------------------------------------------------------------------------------------------------*/
+.header {
+    z-index: 10;
+    position: fixed ;
+    width: 100%;
+    height: 100px;
+    border: solid black 2px;
+    background-image: url(image/carbone_header.jpg);
 }
 nav > ul::after{
     content: "";
@@ -170,11 +112,33 @@ nav li:hover .submenu{
     font-size: small;
     border-top: none;
 }
-#cat {
+
+/*--------------------------------------------------------------------------------main----------------------------------------------------------------------------------------------------*/
+#imageCouvBest {
+    position: relative;
+    z-index: 5;
+    left: 80em;
+    height: 485px;
+    width: 350px;
+    border: 2px solid #252424;
+    border-radius: 20px;
+}
+#best_movie {
+    height: 30em;
+    width: 100%;
+}
+#bestDiv {
+    height: 100%;
+    width: 100%;
+}
+#overFlow {
     position: absolute;
-    padding-left: 1.5em;
-    width: 150px;
-    top: 3.8em;
+    z-index: 4;
+    top: 104px;
+    width: 100%;
+    height: 30.5em;
+    background-color: rgba(26, 25, 25, 0.87);
+    box-shadow: 1px 10px 25px 10px #252424;
 }
 #play {
     position: absolute;
@@ -183,78 +147,139 @@ nav li:hover .submenu{
     top: 3.5em;
     left: 3em;
 }
-.boxing_movies {
-    display: flexbox;   
-    overflow-x: auto;
-    overflow-y: hidden; 
-    white-space: nowrap;
-    text-align: center;
-    vertical-align: middle;
-    width: 100%;
-    height: 20em;
-}
-#box {
-    margin-top: 1.5%;
-    display: table;
-    margin-left: 0 auto;
-    margin-right: 0 auto;
-    background-color: darkgray;
-    display: inline-block;
-    width: auto;
-    height: 16.5em;
-    border: solid black 2px;
-}
 img {
     width: 100%;
     height: 100%;
+    border-radius: 20px;
 }
+.ecart {
+    width: 100%;
+    height: 100px;
+}
+/*-----semantique--------*/
+#titre {
+    position: absolute;
+    z-index: 5;
+    top: 90px;
+    left: 70px;
+    color:white;
+    font-size: 4em;
+    margin-left: 1.5em;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+#years {
+    position: absolute;
+    z-index: 5;
+    top: 270px;
+    left: 120px;
+    color: white;
+    font-size: 2em;
+    margin-left: 1.5em;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-transform: capitalize;
+}
+#description {
+    position: absolute;
+    z-index: 5;
+    width: 65em;
+    top: 350px;
+    left: 145px;
+    color:white;
+    font-size: 1em;
+    margin-left: 1.5em;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-transform: capitalize;
+}
+
+/*--------------------------------------------------------------------------fleche -------------------------------------------------------------------------------------------------------*/
+.flecheGauche {
+    padding: 0;
+    margin-top: 70%;
+    width: 180px;
+    height: 200px;
+}
+.flecheDroite {
+    padding: 0;
+    margin-top: 70%;
+    width: 180px;
+    height: 200px;
+}
+
+/*----------------------------------------------------------------------------carte film--------------------------------------------------------------------------------------------------*/
+/*-------css categorie------*/
+.presentation {
+    height: 50px;
+    padding: 0;
+    margin-bottom: 1.5em;
+    margin-top: 1em;
+}
+/*-----conteneur carte et fleches-------*/
+.categorie {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+/*------enfants----*/
 .fleche {
-    display: inline-block;
     margin: 0;
     padding: 0;
     width: 8%;
 }
 .affichage {
-    display: inline-block;
-    width: 82%;
-}
-.flecheGauche {
-    position: relative;
-    margin-right: auto;
-    margin-left: auto;
-    top: -120px;
-    width: 150px;
-    height: 150px;
-}
-.flecheDroite {
-    position: relative;
-    margin-right: auto;
-    margin-left: auto;
-    top: -110px;
-    width: 150px;
-    height: 150px;
-}
-.boxing {
-    display: inline-flexbox;
-    margin-top: 1.5%;
-    display: table;
-    margin-left: 15px;
-    margin-right: 15px;
-    background-color: darkgray;
-    display: inline-block;
-    width: 16.5em;
-    height: 24em;
-    border: solid black 2px;
-}
-.presentation {
-    height: 50px;
-    padding: 0;
-    margin: 0;
-}
-.boxImage {
-    background-position: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
+.child {
+    display: inline-block;
+    padding: 0;
+    height: 23em;
+}
+.child:first-child {
+    top: 5em;
+    width: 150px;
+}
+.child:not(:first-child) {
+    width: 96em;
+}
+.child:last-child {
+    width: 150px;
+}
+
+/*------css carte film-----*/
+.boxing {
+    width: 16.5em;
+    height: 24em;
+    display: block;
+    padding: 0 10px;
+    flex-shrink: 0;
+}
+.boxing:hover {
+    transition-duration: 0.5s;
+    transform: scale(1.25);
+    -webkit-transform:scale(1.25); /* Safari et Chrome */
+    -webkit-transition-duration: 0.5s;
+    -moz-transform:scale(1.25); /* Firefox */
+    -moz-transition-duration: 0.5s;
+    -ms-transform:scale(1.25); /* Internet Explorer 9 */
+    -ms-transition-duration: 0.5s;
+    -o-transform:scale(1.25); /* Opera */
+    -o-transition-duration: 0.5s;
+}
+.boxing:not(:hover) {
+    transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+}
+
+/*--------------------------------------------------------------------------------footer---------------------------------------------------------------------------------------------------*/
 .footer{
     width: 100%;
     height: 80px;
@@ -274,47 +299,57 @@ img {
     font-size: 15px;
     left: 150px;
 }
-
-.imageModal {
+/*------------------------------------------------------- semantique modal ---------------------------------------------------------------------------------------------------------------*/
+.divModalLeft {
     float: left;
-    margin-top: -20px;
-    width: 30em;
+    margin: 0;
+    width: 25%;
+}
+.divModalRight {
+    width: 70%;
     height: 40em;
+    margin: 0;
+    float: right;
+    overflow: auto;
+}
+.imageModal {
+    height: 38em;
+    border: 2px solid #252424;
+    border-radius: 20px;
+    width: 100%;
 }
 .titleModal {
-    float: right;
-    width: 150px;
-    margin-left: 8em;
     font-size: 5em;
+    margin: 0;
+    width: 90%;
 }
-.yearModal {
-    float: right;
-    margin-left: 21em;
+.texteModal {
     font-size: 2em;
+    width: 80%;
 }
- /* The Modal (background) */
+
+ /*--------------------------------------------------------------------------------The Modal (background)------------------------------------------------------------------------------- */
  .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1001; /* Sit on top */
-    left: 0;
+    z-index: 1010; /* Sit on top */
+    margin: 0;
+    padding: 0;
+    left: 5%;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 90%; /* Full width */
+    height: 90%; /* Full height */
 }
 /* The Close Button */
-.close {
+#close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    padding-right: 10px;
+    font-size: 35px;
     font-weight: bold;
 }
-  
-.close:hover,
-.close:focus {
+#close:hover,
+#close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
@@ -322,48 +357,44 @@ img {
 .is-visible {
     display: block;
 }
-/*     Modal Header    */
-.modal-header {
-    padding: 2px 16px;
-    border-right: 1px solid #888;
-    border-left: 1px solid #888;
-    background-image: url(image/carbone_header.jpg);
-    height: 4em;
-    color: darkgray;
-}
 
+/* ----------------------------------------------------------------------------------structure modal-------------------------------------------------------------------------------------*/
 /*      Modal Body     */
 .modal-body {
     background-image: url(image/fond_carbone.jpg);
-    padding: 2px 16px;
-    border-right: 1px solid #888;
-    border-left: 1px solid #888;
-    height: 40em;
+    margin: 0;
+    padding: 0;
+    border: 5px solid #888;
+    border-radius: 20px;
+    height: 100%;
     color: darkgray;
 }
-
-/*      Modal Footer    */
-.modal-footer {
-    padding: 2px 16px;
-    border-bottom: 1px solid #888;
-    border-left: 1px solid #888;
-    border-right: 1px solid #888;
+/*     Modal Header    */
+.modal-header {
     background-image: url(image/carbone_header.jpg);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 10%;
+    width: 100%;
     color: darkgray;
 }
-
 /*      Modal Content   */
 .modal-content {
-    position: relative;
-    margin: auto;
-    padding: 0;
-    width: 90%;
-    height: 80%;
-    animation-name: animatetop;
-    animation-duration: 0.4s
+    padding: 1.5em;
+    width: 100%;
+    height: 74%;
+}
+/*      Modal Footer    */
+.modal-footer {
+    background-image: url(image/carbone_header.jpg);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 100%;
+    height: 10%;
+    color: darkgray;
 }
 
-/*       Add Animation Modal  */
+/*---------------------------------------------------------------------------------Add Animation Modal-------------------------------------------------------------------------------  */
 @keyframes animatetop {
     from {top: -300px; opacity: 0}
     to {top:0; opacity: 1}
