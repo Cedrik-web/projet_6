@@ -25,21 +25,59 @@ function getBestImage(movie, el) {
 	bestImage.setAttribute("src", image);
 	el.appendChild(bestImage);	
 }
+function addPlayBest(el) {
+	var elementDiv = document.createElement("div");
+	elementDiv.setAttribute("id", "overFlow");
+		var baliseA = document.createElement("a");
+		baliseA.setAttribute("href", "#");
+			var baliseImg = document.createElement("img");
+			baliseImg.setAttribute("id", "play");
+			baliseImg.setAttribute("src", "image/—Pngtree—metallic luster ring player_5554124.png");
+			baliseA.appendChild(baliseImg);
+		elementDiv.appendChild(baliseA);	
+	el.appendChild(elementDiv);	
+}
 function AddElementBest(link) {
 	var movies = document.getElementById('best_movie');
-	
+
+	movies.innerHTML = "";
+
 	fetch(link.url)
 		.then((res) => res.json())
 		.then((data) => {
 		
 		var el = document.createElement("div");
 		el.setAttribute("id", "bestDiv");
+			addPlayBest(el);
 			getBestTitles(data, el);
 			getBestYears(data, el);
 			getBestDescription(data, el);
 			getBestImage(data, el);
 		movies.appendChild(el);
 		});		
+}
+function effetElementBest() {
+	
+	const ratio = 0.2
+	const options = {
+		root: null,
+		rootMargin: "0px",
+		threshold: ratio
+	}
+
+	const handleIntersect = function(entries, observer) {
+		entries.forEach(function (entry) {
+			if (entry.intersectionRatio > ratio) {
+				entry.target.classList.add("reveal-visible")
+				console.log("visible")
+			} else {
+				console.log("invisible")
+				entry.target.classList.remove("reveal-visible")
+			}
+		})
+	}
+	const observer = new IntersectionObserver(handleIntersect, options)
+	observer.observe(document.querySelector(".reveal"))
 }
 
 //gestion de l'affichage de la categorie demander et des fleches---------------------------------------------------------------------------------------------------------------------------
@@ -142,6 +180,7 @@ function AddElementCategory(el, cat) {
 		conteneurChild.appendChild(movies);
 	el.appendChild(conteneurChild);	
 }
+
 // fonction de demande de requete pour les meilleurs films
 function AddElementBestMovies(el, cat) {
 
@@ -169,6 +208,11 @@ function AddElementBestMovies(el, cat) {
 				
 				const catalogue = dict.slice(5);
 
+				findTitleFavori(dict);
+				setInterval(function() {
+				findTitleFavori(dict);
+	 	 		}, 10000);
+
 				catalogue.map(( movie, index) => {
 					
 					var categoryImage = document.createElement("a");
@@ -184,22 +228,14 @@ function AddElementBestMovies(el, cat) {
 			});		
 		});
 		conteneurChild.appendChild(movies);
-	el.appendChild(conteneurChild);	
-	findTitleFavori(link);
+	el.appendChild(conteneurChild);
 }
 
 // fonction de requette sur Array pour en extraire un objet
-function findTitleFavori(links) {
-
-	fetch(links)
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			
-			const randomMovie = results[Math.floor(Math.random() * results.length)];
-
-			AddElementBest(randomMovie);
-		});
+function findTitleFavori(results) {
+		console.log("liens", results);
+		const randomMovie = results[Math.floor(Math.random() * results.length)];
+		AddElementBest(randomMovie);
 }
 
 // element carte -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -343,8 +379,4 @@ function getElementFlecheNextImg(el, cat) {
 
 // appel des fonctions---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 addCategory();
-
-
-var elm = document.getElementById("btnBestBest0");
-var el = elm.dataset
-console.log("element:", el)
+effetElementBest();
