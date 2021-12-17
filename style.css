@@ -20,7 +20,7 @@ h1 {
     top: 1em;
     left: 5.3em;
     float: left;
-    width: 60%;
+    width: 30%;
 }
 h3 {
     position: relative;
@@ -60,9 +60,10 @@ nav a {
     display: none;
 }
 #boutonAcceuil {
-    width: 100px;
+    width: 6em;
     position:relative;
     top: 2em;
+    left: 50em;
     background-image: url(image/wallpaperbetter.com_1280x768.jpg);
     border: solid darkgray 2px;
     list-style-type: none;
@@ -72,9 +73,10 @@ nav a {
     border-radius: 15px;
 }
 #boutonCat {
-    width: 100px;
+    width: 6.5em;
     position:relative;
     top: 2em;
+    left: 49em;
     background-image: url(image/wallpaperbetter.com_1280x768.jpg);
     border: solid darkgray 2px;
     list-style-type: none;
@@ -220,12 +222,14 @@ img {
     margin-top: 70%;
     width: 180px;
     height: 200px;
+    cursor: pointer;
 }
 .flecheDroite {
     padding: 0;
     margin-top: 70%;
     width: 180px;
     height: 200px;
+    cursor: pointer;
 }
 
 /*----------------------------------------------------------------------------carte film--------------------------------------------------------------------------------------------------*/
@@ -236,20 +240,18 @@ img {
     margin-bottom: 1.5em;
     margin-top: 1em;
 }
+
 /*-----conteneur carte et fleches-------*/
 .categorie {
+    height: 400px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
 }
+
 /*------enfants----*/
-.fleche {
-    margin: 0;
-    padding: 0;
-    width: 8%;
-}
 .affichage {
     display: flex;
     justify-content: space-between;

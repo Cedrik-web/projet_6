@@ -1,6 +1,5 @@
+
 let catalogues = {}
-const NOMBRE_DE_CARTES = 5
-let compteurs = {"best": 0, "action": 0, "adventure": 0, "comedy": 0, "drama":0}
 
 // gestion du film afficher en favori grand format ----------------------------------------------------------------------------------------------------------------------------------------
 function getBestTitles(movie, el) {
@@ -88,24 +87,34 @@ function addElementDiv(cat, el) {
 	
 	var elementDiv = document.createElement("div");
 	elementDiv.setAttribute("class", "categorie");
-		getElementFlechePreviousDiv(elementDiv);
+		console.log("catalogues1 :", catalogues)
 		AddElementCategory(elementDiv, cat);
-		getElementFlecheNextDiv(elementDiv);
+		console.log("cat", cat);
+		console.log("catalogues2 :", catalogues)
+	el.appendChild(elementDiv);
+}
+
+function addElementDivBest(cat, el) {
+	
+	var elementDiv = document.createElement("div");
+	elementDiv.setAttribute("id", "Best");
+	elementDiv.setAttribute("class", "categorie");
+		AddElementBestMovies(elementDiv, cat);
 	el.appendChild(elementDiv);
 }
 
 //gestion des affichages de l ensemble div fleches et categories---------------------------------------------------------------------------------------------------------------------------
-function addCategory(cat) {
+function addCategory() {
 	
 	var movies = document.getElementById("category");
 	var parentDiv = document.createElement("div");
 	parentDiv.setAttribute("id", "first");
 
-		addBanderolle(cat, parentDiv);
-	//	addBanderolle(data, parentDiv);	
-	//	addBanderolle(data("adventure"), parentDiv);
-	//	addBanderolle(data("comedy"), parentDiv);
-	//	addBanderolle(data("drama"), parentDiv);
+		addBanderolleBest("best", parentDiv);
+		addBanderolle("action", parentDiv);	
+	//	addBanderolle("adventure", parentDiv);
+	//	addBanderolle("comedy", parentDiv);
+	//	addBanderolle("drama", parentDiv);
 
 	movies.appendChild(parentDiv);
 }
@@ -113,7 +122,10 @@ function addBanderolle(cat, el) {
 	addDivPresentation(cat, el);
 	addElementDiv(cat, el);
 }
-
+function addBanderolleBest(cat, el) {
+	addDivPresentation(cat, el);
+	addElementDivBest(cat, el);	
+}
 function addDivPresentation(cat, el) {
 	var conteneur = document.createElement("div");
 	conteneur.setAttribute("class", "presentation");
@@ -127,98 +139,114 @@ function addTitreCat(cat, el) {
 }
 
 // fonction de demande de requette à l'api pour les categories et pour la requette d'un objet aleatoire pour affichage baniere
-function AddDataCategoryMovies(cat) {
+function AddElementCategory(el, cat) {
 
 	var link =  (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`)
+	var ind = (cat);
 	var link2 = (`http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=${cat}&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=2&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=`)
 		
-	fetch(link)
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const dict = results;
+	var conteneurChild = document.createElement("div");
+	conteneurChild.setAttribute("class", "child");
+		var movies = document.createElement("div");
+		movies.setAttribute("id", `${cat}`);
+		movies.setAttribute("class", "affichage");
+		
+		fetch(link)
+			.then((res) => res.json())
+			.then((data) => {
+				const { results } = data;
+				const dict = results;
 
-	fetch(link2)
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const dict2 = results;	
-			Array.prototype.push.apply(dict, dict2);
+		fetch(link2)
+			.then((res) => res.json())
+			.then((data) => {
+				const { results } = data;
+				const dict2 = results;	
+				Array.prototype.push.apply(dict, dict2);
 				
-			catalogues[cat] = dict;	 	
-		});	
-	});
+				catalogues[cat] = dict;		
+			});	
+		});
+		conteneurChild.appendChild(movies);
+	el.appendChild(conteneurChild);	
 }
 
 // fonction de demande de requete pour les meilleurs films
-function AddElementCategory(el, cat) {
-		
-	var conteneurChild = document.createElement("div")
-	conteneurChild.setAttribute("class", "child")
-		var movies = document.createElement("div")
-		movies.setAttribute("id", `${cat}`)
-		movies.setAttribute("class", "affichage")
-
-			console.log("le catalogues ", catalogues)
-			console.log("categorie demander :", cat)
-
-			var prev = compteurs[cat]
-			var next = prev + NOMBRE_DE_CARTES
-			
-			//var catalogue = categoryData.slice(prev, next)
-
-			console.log("catalogue", catalogues[cat])
-			
-			//displayCarte(el, cat,  catalogue)
-
-	conteneurChild.appendChild(movies)
-	el.appendChild(conteneurChild)
-
-}
-
-function AddDataBestMovies(cat) {
+function AddElementBestMovies(el, cat) {
 
 	var link =  (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=9.3&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`)
+	var ind = (cat);
 	var link2 = (`http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=9.3&lang=&lang_contains=&max_year=&min_year=&page=2&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=`)
+	
+	var conteneurChild = document.createElement("div");
+	conteneurChild.setAttribute("class", "child");
+		var movies = document.createElement("div");
+		movies.setAttribute("id", `${cat}`);
+		movies.setAttribute("class", "affichage");
 		
-	fetch(link)
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const dict = results;
+		fetch(link)
+			.then((res) => res.json())
+			.then((data) => {
+				const { results } = data;
+				const dict = results;
 
-	fetch(link2)
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const dict2 = results;	
-			Array.prototype.push.apply(dict, dict2);
+		fetch(link2)
+			.then((res) => res.json())
+			.then((data) => {
+				const { results } = data;
+				const dict2 = results;	
+				Array.prototype.push.apply(dict, dict2);
 
-		//	findTitleFavori(dict);
-		//	setInterval(function() {
-		//	findTitleFavori(dict);
-	 	// 	}, 10000);
+				findTitleFavori(dict);
+				setInterval(function() {
+				findTitleFavori(dict);
+	 	 		}, 10000);
 
-			catalogues[cat] = dict;	     	
-		});		
-	});
+				catalogues[cat] = dict;	 
+				//displayCarte(movies, ind, dict);  	
+			});		
+		});
+		conteneurChild.appendChild(movies);
+	el.appendChild(conteneurChild);
+}
+const NOMBRE_DE_CARTES = 5
+let compteurs = {"best": 0, "action": 0}
+
+function previous(categorie) {
+	
+	if (compteurs[categorie] > 0) {
+		compteurs[categorie] = compteurs[categorie] - 1
+		console.log(`${categorie}`, compteurs[categorie])
+	} 
 }
 
-function displayCarte(el, cat,  catalogue) {
+function next(categorie) {
+
+	if ( compteurs[categorie] <= 10)
+	compteurs[categorie] = compteurs[categorie] + 1
+	console.log(`${categorie}`, compteurs[categorie])
+}
+
+
+// function d'affichage des cartes dans les divs
+function displayCarte(el, ind,  catalogue) {
+
+	console.log("catalogue", catalogue);
+	var selection = catalogue.slice(5, 10);
 
 	el.innerHTML = "";
 	
-	catalogue.map(( movie, index) => {
+	selection.map(( movie, index) => {
 					
-		var categoryImage = document.createElement("a");
+		var categoryImage = document.createElement("div");
 		
-		var id = (`${cat}${index}`);
+		var id = (`${ind}${index}`);
 			categoryImage.setAttribute("id", `btnBest${id}`);
-			categoryImage.setAttribute("class", "boxing carte");
+			categoryImage.setAttribute("class", "boxing");
 				getCategoryImage(movie, categoryImage, id);
 			
-		el.appendChild(categoryImage);
-		categoryImage.addEventListener("click", myModalOn(movie.url, id));
+			el.appendChild(categoryImage);
+			categoryImage.addEventListener("click", myModalOn(movie.url, id));
 	});
 }
 
@@ -332,69 +360,6 @@ function dataModal(data) {
 	});	
 }
 
-// element fleches-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-function callCategoryData() {
-	AddDataBestMovies("best")
-	AddDataCategoryMovies("action")
-	AddDataCategoryMovies("adventure")
-	AddDataCategoryMovies("comedy")
-	AddDataCategoryMovies("drama")
-}
-
-function callDisplayCarteCategory(category) {
-	addCategory(category)
-}
-
-function previous(categorie) {
-
-	if (compteurs[categorie] > 0) {
-		compteurs[categorie] = compteurs[categorie] - 1
-		var previous = compteurs[categorie] - 1
-		var next = previous + NOMBRE_DE_CARTES
-	} 
-}
-
-function next(categorie) {
-
-	if ( compteurs[categorie] <= 10)
-	compteurs[categorie] = compteurs[categorie] + 1
-	var previous = compteurs[categorie] + 1
-	var next = previous + NOMBRE_DE_CARTES
-}
-
-function getElementFlechePreviousDiv(el, data) {
-	var elementDiv = document.createElement("div");
-	elementDiv.setAttribute("class", "fleche");
-		getElementFlechePreviousImg(elementDiv);
-	el.appendChild(elementDiv);
-}
-
-function getElementFlechePreviousImg(el) {
-	var elementImg = document.createElement("img");
-	elementImg.setAttribute("id", "flecheBestPrevious");
-	elementImg.setAttribute("class", "flecheGauche");
-	elementImg.src = "image/fleche_inox_gauche.png";
-	el.appendChild(elementImg);
-}
-
-function getElementFlecheNextDiv(el, data) {
-	var elementDiv2 = document.createElement("div");
-	elementDiv2.setAttribute("class", "fleche");
-		getElementFlecheNextImg(elementDiv2);
-	el.appendChild(elementDiv2);
-}
-
-function getElementFlecheNextImg(el) {
-	var elementImg2 = document.createElement("img");
-	elementImg2.setAttribute("id", "flecheBestNext");
-	elementImg2.setAttribute("class", "flecheDroite");
-	elementImg2.src = "image/fleche_inox_droite.png";
-	el.appendChild(elementImg2);
-}
-
 // appel des fonctions---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-callCategoryData()
-callDisplayCarteCategory("best")
-effetElementBest()
-console.log("essais de recuperatiion de categorie", catalogues["action"])
+addCategory();
+effetElementBest();
