@@ -218,15 +218,20 @@ img {
 
 /*--------------------------------------------------------------------------fleche -------------------------------------------------------------------------------------------------------*/
 .flecheGauche {
+    position: absolute;
+    background-color: aqua;
+    background-image: url(image/fleche_inox_gauche.png);
     padding: 0;
-    margin-top: 70%;
     width: 180px;
     height: 200px;
     cursor: pointer;
 }
 .flecheDroite {
+    position: absolute;
+    background-color: aqua;
+    background-image: url(image/fleche_inox_droite.png);
     padding: 0;
-    margin-top: 70%;
+    right: 0%;
     width: 180px;
     height: 200px;
     cursor: pointer;
