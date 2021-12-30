@@ -1,10 +1,16 @@
  /**
   * initialisation des compteurs du ARRAY: catalogues et de la CONSTANTE nombre de cartes
   */
-let catalogues = {action: [], adventure: [], comedy: [], drama:[]}
-let yoann = {}
+let catalogues = {}
 const NOMBRE_DE_CARTES = 5
-let compteurs = {"best": 0, "action": 0, "adventure": 0, "comedy": 0, "drama":0}
+
+const CAT1 = "best"
+const CAT2 = "action"
+const CAT3 = "adventure"
+const CAT4 = "comedy"
+const CAT5 = "drama"
+
+let compteurs = {"best": 0, "CAT2": 0, "CAT3": 0, "CAT4": 0, "CAT5": 0}
 
 
 /**
@@ -38,72 +44,39 @@ function findTitleFavori(results) {
 }
 
 // fonction de demande de requette à l'api pour les categories et les film BEST puis creation d'un array dict
-function AddDataCategoryMovies(cat) {
+async function AddDataCategoryMovies(cat) {
 
 	var link =  (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`)
-	var link2 = (`http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=${cat}&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=&lang=&lang_contains=&max_year=&min_year=&page=2&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=`)
-		
-	fetch(link)
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data
-			const dict = results
-
-	fetch(link2)
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data
-			const dict2 = results	
-			//Array.prototype.push.apply(dict, dict2)
-				
-			catalogues[cat] = [...dict, ...dict2]	 	
-		});	
-	});
-}
- async function AddDataBestMovies(cat, catalogues) {
-
-	var link =  (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=9.3&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`)
-	var link2 = (`http://localhost:8000/api/v1/titles/?actor=&actor_contains=&company=&company_contains=&country=&country_contains=&director=&director_contains=&genre=&genre_contains=&imdb_score=&imdb_score_max=&imdb_score_min=9.3&lang=&lang_contains=&max_year=&min_year=&page=2&rating=&rating_contains=&sort_by=&title=&title_contains=&writer=&writer_contains=&year=`)
-	let objs = "toto"
 	
 	const data = await (await fetch(link)).json()
-	console.log("data", data.results)
-	catalogues[cat] = data.results
-	yoann[cat] = data.results
-	/**fetch(link)
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const dict = results
-
-	fetch(link2)
-		.then((res) => res.json())
-		.then((data) => {
-			const { results } = data;
-			const dict2 = results	
-			//Array.prototype.push.apply(dict, dict2)
-
-		//	findTitleFavori(dict);
-		//	setInterval(function() {
-		//	findTitleFavori(dict);
-	 	// 	}, 10000);
-
-			catalogues[cat] = [...dict, ...dict2]	
-			objs =  [...dict, ...dict2]   
-			console.log("catalogues cat", catalogues[cat])  	
-		});		
-	});**/
-	console.log("objs", objs)
+	const dataNext = await (await fetch(data.next)).json()
+			
+	catalogues[cat] = [...data.results, ...dataNext.results]	 	
 }
+
+ async function AddDataBestMovies(cat) {
+
+	var link =  (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=9.3&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`)
+	
+	const data = await (await fetch(link)).json()
+	const dataNext = await (await fetch(data.next)).json()
+
+	//	findTitleFavori(dict);
+	//	setInterval(function() {
+	//	findTitleFavori(dict);
+	// 	}, 10000);
+
+	catalogues[cat] = [...data.results, ...dataNext.results]		
+}
+
 // function passant les category pour les requette fecth
-function callCategoryData() {
-	AddDataBestMovies("best", catalogues)
-	// AddDataCategoryMovies("action")
-	// AddDataCategoryMovies("adventure")
-	// AddDataCategoryMovies("comedy")
-	// AddDataCategoryMovies("drama")
+function callCategoryData(cat1, cat2, cat3, cat4, cat5) {
+	AddDataBestMovies(cat1)
+	AddDataCategoryMovies(cat2)
+	AddDataCategoryMovies(cat3)
+	AddDataCategoryMovies(cat4)
+	AddDataCategoryMovies(cat5)
 }
-
 
 /**
  * 
@@ -111,7 +84,7 @@ function callCategoryData() {
  * @param {string} cat category demander
  * @param {Array} catalogue tableaux de 5 objets
  */
-// fonction de demande de data et en sortie renvoie un catalogues de cartes par categorie
+// fonction de demande de data et en sortie renvoie la selection de cartes demander
 function AddElementCategory(el, cat) {
 		
 	var conteneurChild = createDivWithClass("child")
@@ -119,7 +92,6 @@ function AddElementCategory(el, cat) {
 		movies.setAttribute("class", "affichage")
 
 			console.log("le catalogues ", catalogues)
-			const myBest = catalogues
 			console.log("categorie demander :", cat)
 
 			var prev = compteurs[cat]
@@ -127,8 +99,7 @@ function AddElementCategory(el, cat) {
 
 			console.log("compteur", prev, next)
 
-			var categoryData = myBest[cat]
-			console.log("categoryData", yoann[cat])
+			var categoryData = catalogues[cat]
 			
 			//var catalogue = categoryData.slice(prev, next)
 
@@ -156,7 +127,6 @@ function displayCarte(el, cat,  catalogue) {
 	});
 }
 
-
 /**
  * 
  * @param {string} cat 
@@ -168,7 +138,7 @@ function displayCarte(el, cat,  catalogue) {
  */
 
 // function de creation de parent (conteneur) pour affichage des category demander en argument
-function addCategory(cat, cat1, cat2, cat3, cat4) {	
+function callAddCategory(cat, cat1, cat2, cat3, cat4) {	
 	var movies = document.getElementById("category")
 	var parentDiv = createDivWithId("first") 
 	
@@ -186,11 +156,10 @@ function addBanderolle(cat, el) {
 	addElementDiv(cat, el)
 }
 
-
 /**
  * 
- * @param {} movie 
- * @param {*} id 
+ * @param {object} movie data de la carte demander
+ * @param {string} id id de la carte demander
  */
 // modal-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function myModalOn(movie, id) {
@@ -223,6 +192,12 @@ function myModalOff(modal, span) {
 	}
 } 
 
+/**
+ * 
+ * @param {string} cat categorie demander
+ * @param {HTMLElement}  el parent html
+ * @param {string} index position de la carte 
+ */
 // Modification du DOM pour l affichage des categories
 function addElementDiv(cat, el) {
 	
@@ -341,6 +316,9 @@ function getConteneurRight(movie, el) {
 	el.appendChild(addDiv)	
 }
 
+/**
+ * function de surveillance de windows
+ */
 // surveillance de l'apparition du film mise en avant dans l'ecran et declenchement de l'affichage-----------------------------------------------------------------------------------------
 function effetElementBest() {
 	
@@ -365,6 +343,10 @@ function effetElementBest() {
 	observer.observe(document.querySelector(".reveal"))
 }
 
+/**
+ * 
+ * @param {link} data url de l'objet carte
+ */
 // function de gestion data de la modal----------------------------------------------------------------------------------------------------------------------------------------------------
 function dataModal(data) {
 	var surveillance = document.getElementById(`corpsModal`)
@@ -381,6 +363,11 @@ function dataModal(data) {
 	});	
 }
 
+/**
+ * 
+ * @param {string} categorie categorie demander
+ * @param {HTMLElement} el div parent
+ */
 // element fleches-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 function previous(categorie) {
 
@@ -401,22 +388,28 @@ function next(categorie) {
 	console.log(`next compteur ${categorie} :`, previous , next)
 }
 
-function getElementFlechePrevious(el, cat) {
+function getElementFlechePrevious(el, categorie) {
 	var elementImg = createDivWithClass("flecheGauche")
 	elementImg.onclick = function() {
-		previous(cat)
+		previous(categorie)
 	}
 	el.appendChild(elementImg)
 }
 
-function getElementFlecheNext(el, cat) {
+function getElementFlecheNext(el, categorie) {
 	var elementImg = createDivWithClass("flecheDroite")
 	elementImg.onclick = function() {
-		next(cat)
+		next(categorie)
 	}
 	el.appendChild(elementImg);
 }
 
+/**
+ * 
+ * @param {string} className 
+ * @param {string} IDName
+ * @returns HTMLElement
+ */
 // function generique pour modification du DOM
 function createDivWithClass(className) {
 
@@ -433,18 +426,17 @@ function createDivWithId(IDName) {
 
 }
 
-// function de gestion d'appel de fonctions
-function callDisplayCarteCategory(cat , cat1, cat2, cat3, cat4) {
-	addCategory(cat, cat1, cat2, cat3, cat4)
-}
-
-
+/**
+ * appel des fonctions
+ */
 // appel des fonctions---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-callCategoryData()
-callDisplayCarteCategory("best", "adventure", "action", "comedy", "drama")
+callCategoryData(CAT1, CAT2, CAT3, CAT4, CAT5)
+callAddCategory(CAT1, CAT2, CAT3, CAT4, CAT5)
 effetElementBest()
 
 
 // essais retour console
-console.log(" essais compteur :", compteurs)
-console.log("essais de recuperation de categorie", catalogues)
+console.log("affichage categorie :", CAT1)
+console.log("affichage compteur intialiser :", compteurs)
+console.log("affichage catalogues :", catalogues)
+console.log("affichage d'un categorie :", catalogues.best)
