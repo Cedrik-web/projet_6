@@ -44,21 +44,28 @@ function findTitleFavori(results) {
 }
 
 // fonction de demande de requette à l'api pour les categories et les film BEST puis creation d'un array dict
-async function AddDataCategoryMovies(el, cat) {
+async function AddDataCategoryMovies(el, cat, index) {
+
 	var link =  (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=${cat}&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`)
-		const data = await (await fetch(link)).json()
-		const dataNext = await (await fetch(data.next)).json()	
-			const catalogue = [...data.results, ...dataNext.results]
-			AddElementCategory(el, catalogue, cat)
+	
+	const data = await (await fetch(link)).json()
+	const dataNext = await (await fetch(data.next)).json()	
+
+		const catalogue = [...data.results, ...dataNext.results]
+		AddElementCategory(el, catalogue, cat)
 }
 
-async function AddDataBestMovies(el, cat) {
+async function AddDataBestMovies(el, cat, index) {
+
 	var link =  (`http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=9.3&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=`)
 
 	const data = await (await fetch(link)).json()
 	const dataNext = await (await fetch(data.next)).json()
+
 		const catalogue = [...data.results, ...dataNext.results]	
+
 		AddElementCategory(el, catalogue, cat)
+
 			findTitleFavori(catalogue);
 			setInterval(function() {
 			findTitleFavori(catalogue);
@@ -73,11 +80,13 @@ async function AddDataBestMovies(el, cat) {
  */
 
 // fonction de demande de data et en sortie renvoie la selection de cartes demander
- function AddElementCategory(el, catalogue, cat) {
+ function AddElementCategory(el, catalogue, cat, index) {
 
 	const newPrevious = document.getElementById(`flecheGauche${cat}`)
 	const newNext = document.getElementById(`flecheDroite${cat}`)
+
 	newPrevious.setAttribute("class", "reveal")
+
 	newPrevious.addEventListener("click", previous(cat, newPrevious, newNext, el, catalogue))
 	newNext.addEventListener("click", next(cat, newNext, newPrevious, el, catalogue))
 
@@ -96,6 +105,7 @@ function displayCarte(el, cat,  catalogue) {
 		var id = (`${cat}${index}`)			
 		var carte = createDivWithId(`btnBest${id}`)
 			carte.setAttribute("class", "boxing carte")
+			carte.setAttribute("tabindex", index)
 				getCategoryImage(movie, carte, id)		
 		el.appendChild(carte)
 		carte.addEventListener("click", myModalOn(movie.url, id))	
@@ -118,18 +128,18 @@ function callAddCategory(cat, cat1, cat2, cat3, cat4) {
 
 	var movies = document.getElementById("category")
 	var parentDiv = createDivWithId("first") 
-		addBanderolle(cat, parentDiv)
-		addBanderolle(cat1, parentDiv)
-		addBanderolle(cat2, parentDiv)
-		addBanderolle(cat3, parentDiv)
-		addBanderolle(cat4, parentDiv)
+		addBanderolle(cat, parentDiv, 10)
+		addBanderolle(cat1, parentDiv, 20)
+		addBanderolle(cat2, parentDiv, 30)
+		addBanderolle(cat3, parentDiv, 40)
+		addBanderolle(cat4, parentDiv, 50)
 	movies.appendChild(parentDiv)
 }
 
 // function d'affichage d'une categorie
-function addBanderolle(cat, el) {
+function addBanderolle(cat, el , index) {
 
-	addDivPresentation(cat, el)
+	addDivPresentation(cat, el, index)
 	addElementDiv(cat, el)
 }
 
@@ -151,8 +161,6 @@ function myModalOn(movie, id) {
 
     onBouton.onclick = function() {
 		modal.classList.add("is-visible")
-        console.log(modal);
-		console.log("ouverture modal")
 		dataModal(movie, id)
 	}
 	span.addEventListener("click", myModalOff(modal, span))
@@ -162,7 +170,6 @@ function myModalOff(modal, span) {
 
 	span.onclick = function() {
 		modal.classList.remove("is-visible")
-        console.log("clické sur fermé")
 	}
 
     window.onclick = function(event) {
@@ -190,7 +197,7 @@ function addElementDiv(cat, el) {
 	el.appendChild(elementDiv)
 }
 
-function createDivForDisplayCarte(el, cat) {
+function createDivForDisplayCarte(el, cat, index) {
 
 	const conteneur = createDivWithClass("affichage")
 		if (cat == "best") {
@@ -201,9 +208,10 @@ function createDivForDisplayCarte(el, cat) {
 	el.appendChild(conteneur)
 }
 
-function addDivPresentation(cat, el) {
+function addDivPresentation(cat, el, index) {
 
 	var conteneur = createDivWithClass("presentation")
+	conteneur.setAttribute("tabindex", index)
 		addTitreCat(cat, conteneur)
 	el.appendChild(conteneur)
 }
@@ -228,86 +236,99 @@ function getCategoryImage(movie, el, index) {
 // information Data du film afficher grand format ----------------------------------------------------------------------------------------------------------------------------------------
 function getBestTitles(movie, el) {
 
-	var bestTitle = document.createElement("h4");
-	bestTitle.setAttribute("id", "titre");
-	bestTitle.innerText = movie.title;
-	el.appendChild(bestTitle);	
+	var bestTitle = document.createElement("h4")
+	bestTitle.setAttribute("class", "titre")
+	bestTitle.innerText = movie.title
+	el.appendChild(bestTitle)	
 }
 
 function getBestYears(movie, el) {
 
-	var bestYears = document.createElement("h2");
-	bestYears.setAttribute("id", "years");
-	bestYears.innerText = movie.year;
-	el.appendChild(bestYears);	
+	var bestYears = document.createElement("h2")
+	bestYears.setAttribute("class", "years")
+	bestYears.innerText = movie.year
+	el.appendChild(bestYears)	
 }
 
 function getBestDescription(movie, el) {
 
-	var bestDescription = document.createElement("h2");
-	bestDescription.setAttribute("id", "description");
-	bestDescription.innerText = movie.long_description;
-	el.appendChild(bestDescription);	
+	var bestDescription = document.createElement("h2")
+	bestDescription.setAttribute("class", "description")
+	bestDescription.innerText = movie.long_description
+	el.appendChild(bestDescription)	
 }
 
 function getBestImage(movie, el) {
 
-	var bestImage = document.createElement("img");
-	bestImage.setAttribute("id", "imageCouvBest");
-	const image = movie.image_url;
-	bestImage.setAttribute("src", image);
-	el.appendChild(bestImage);	
+	var bestImage = document.createElement("img")
+	bestImage.setAttribute("id", "imageCouvBest")
+	const image = movie.image_url
+	const imageAlt = movie.title
+	bestImage.setAttribute("src", image)
+	bestImage.setAttribute("alt", imageAlt)
+	el.appendChild(bestImage)
 }
 
 function addPlayBest(el) {
 
 	var elementDiv = createDivWithId("overlay")
-		var baliseA = document.createElement("a");
-		baliseA.setAttribute("href", "#");
-			var baliseImg = document.createElement("img");
-			baliseImg.setAttribute("id", "play");
-			baliseImg.setAttribute("src", "image/—Pngtree—metallic luster ring player_5554124.png");
-			baliseA.appendChild(baliseImg);
-		elementDiv.appendChild(baliseA);	
-	el.appendChild(elementDiv);	
+		var baliseA = document.createElement("a")
+		baliseA.setAttribute("href", "#")
+
+			var baliseImg = document.createElement("img")
+			baliseImg.setAttribute("id", "play")
+			baliseImg.setAttribute("src", "image/—Pngtree—metallic luster ring player_5554124.png")
+			baliseA.appendChild(baliseImg)
+		elementDiv.appendChild(baliseA)	
+	el.appendChild(elementDiv);
 }
 
 // informations data modal----------------------------------------------------------------------------------------------------------------------------------------------------------------
-function getAddTitle(movie ,el){
+function getAddTexteModal(movie ,el ,typeText , className, selection, textePrev, texteNext, selection2) {
 
-	var addTitle = document.createElement("h2")
-	addTitle.setAttribute("class", "titleModal")
-	addTitle.innerText = movie.title
-	el.appendChild(addTitle)
+	var addElement = createTexteWithClass(typeText, className)
+	var data1 = movie[selection]
+
+	if (selection2 == undefined) {
+			addElement.innerText = `${textePrev} ${data1} ${texteNext}`
+	} else {
+		var data2 = movie[selection2]
+		addElement.innerText = `${textePrev} ${data1} ${texteNext} ${data2}`
+	}
+	el.appendChild(addElement)
 }
 
-function getAddYear(movie , el){
+function classementEtoileImdb(movie, el) {
+	
+	var conteneurEtoile = createDivWithClass("imdbModal")
+	var score = movie.imdb_score
 
-	var addYears = document.createElement("p")
-	addYears.setAttribute("class", "texteModal")
-	var years = movie.year;
-	addYears.innerText = `année de sortie du film : ${years} `
-	el.appendChild(addYears);
-}
+	var imdb = createTexteWithClass("p", "texteImdb")
+	imdb.innerText = "score imdb"
 
-function getAddDescription(movie , el){
+	conteneurEtoile.appendChild(imdb)
 
-	var addDescription = document.createElement("p");
-	addDescription.setAttribute("class", "texteModal");
-	var description = movie.long_description;
-	addDescription.innerText = `Synopsis :  ${description}`
-	el.appendChild(addDescription);
+	for (let iteration = 0; iteration < score; iteration++) {
+		
+		var etoile = document.createElement("img")
+		etoile.setAttribute("class", "etoiles")
+		etoile.setAttribute("src", "image/etoile.png")
+		conteneurEtoile.appendChild(etoile)
+	}
+	el.appendChild(conteneurEtoile)
 }
 
 function getAddPic(movie, el) {
 
 	var addPic = document.createElement("img")
 	addPic.setAttribute("class", "imageModal")
+	addPic.setAttribute("alt", movie.title)
 	const image = movie.image_url
 	addPic.setAttribute("src", image)
 	el.appendChild(addPic)
 }
 
+//function rajoute l'image du film sur la partie gauche de la modal
 function getConteneurLeft(movie, el) {
 
 	var addDiv = createDivWithClass("divModalLeft")
@@ -317,15 +338,31 @@ function getConteneurLeft(movie, el) {
 	el.appendChild(addDiv)
 }
 
+//function de creation de la semantique de la modal avec les elements demander sur la partie droite
 function getConteneurRight(movie, el) {
 	
 	var addDiv = createDivWithClass("divModalRight")
 
-		getAddTitle(movie, addDiv)
-		getAddYear(movie, addDiv)
-		getAddDescription(movie, addDiv)
+		getAddTexteModal(movie ,addDiv ,"h2" , "titleModal", "title", "", "")
+		getAddTexteModal(movie ,addDiv ,"p" , "durationModal", "duration", "Film de", "minutes")
+		getAddTexteModal(movie ,addDiv ,"p" , "genreModal", "genres", "", "")
+		getAddTexteModal(movie ,addDiv ,"p" , "yearModal", "year", "année de sortie du film :", "")
+		classementEtoileImdb(movie ,addDiv)
+		getAddTexteModal(movie ,addDiv ,"p" , "ratedModal", "rated", "Evaluation :", "")
+		getAddTexteModal(movie ,addDiv ,"p" , "countriesModal", "rated", "Box-office :", "")
+		getAddTexteModal(movie ,addDiv ,"p" , "countriesModal", "countries", "Film :", "")
+		getAddTexteModal(movie ,addDiv ,"p" , "directorModal", "directors", "Film réaliser par ", "et interprété par ", "actors")
+		getAddTexteModal(movie ,addDiv ,"p" , "texteModal", "long_description", "Synopsis :", "")
 
 	el.appendChild(addDiv)	
+}
+
+function createTexteWithClass(text, className) {
+
+	var addDocument = document.createElement(text)
+	addDocument.setAttribute("class", className)
+	return addDocument
+
 }
 
 /**
@@ -385,9 +422,11 @@ function dataModal(data) {
 function previous(categorie, el, nt, parent, catalogue) {
 
 	el.onclick = function() {
+
 		if (compteurs[categorie] > 0) {
-			el.setAttribute("class", "reveal-visible ")
-			nt.setAttribute("class", "reveal-visible")
+			el.setAttribute("class", "reveal-visible fleche")
+			nt.setAttribute("class", "reveal-visible fleche")
+
 			compteurs[categorie] = compteurs[categorie] - 1
 			var previous = compteurs[categorie]
 			var next = previous + NOMBRE_DE_CARTES
@@ -402,9 +441,11 @@ function previous(categorie, el, nt, parent, catalogue) {
 function next(categorie, el, prev, parent, catalogue) {
 
 	el.onclick = function() {	
+
 		if ( compteurs[categorie] < 5) {
-			el.setAttribute("class", "reveal-visible")
-			prev.setAttribute("class", "reveal-visible")
+			el.setAttribute("class", "reveal-visible fleche")
+			prev.setAttribute("class", "reveal-visible fleche")
+
 			compteurs[categorie] = compteurs[categorie] + 1
 			var previous = compteurs[categorie]
 			var next = previous + NOMBRE_DE_CARTES
@@ -420,6 +461,7 @@ function getElementFlechePrevious(el, categorie) {
 
 	var elementFleche = createDivWithClass("flecheGauche")
 	var flecheImg = document.createElement("img")
+
 	flecheImg.setAttribute("id", `flecheGauche${categorie}`)
 	flecheImg.setAttribute("class", "fleche")
 	flecheImg.setAttribute("src", "image/fleche_inox_gauche.png")
@@ -431,6 +473,7 @@ function getElementFlecheNext(el, categorie) {
 
 	var elementFleche = createDivWithClass("flecheDroite")
 	var flecheImg = document.createElement("img")
+
 	flecheImg.setAttribute("id", `flecheDroite${categorie}`)
 	flecheImg.setAttribute("class", "fleche")
 	flecheImg.setAttribute("src", "image/fleche_inox_droite.png")

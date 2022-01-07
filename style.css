@@ -39,6 +39,11 @@ h3 {
     margin-top: 0;
     margin-bottom: 0;
 }
+h4 {
+
+    margin: 0; 
+    padding: 10px;
+}
 
 /*-------------------------------------------------------------------------header--------------------------------------------------------------------------------------------------------*/
 .header {
@@ -210,7 +215,7 @@ img {
     height: 100px;
 }
 /*-----semantique--------*/
-#titre {
+.titre {
 
     position: absolute;
     z-index: 5;
@@ -222,11 +227,11 @@ img {
     margin-bottom: 0;
     text-transform: uppercase;
 }
-#years {
+.years {
 
     position: absolute;
     z-index: 5;
-    top: 230px;
+    top: 220px;
     left: 120px;
     color: white;
     font-size: 2em;
@@ -235,11 +240,12 @@ img {
     margin-top: 0;
     text-transform: capitalize;
 }
-#description {
+.description {
 
     position: absolute;
     z-index: 5;
     width: 65em;
+    line-height: 170%;
     top: 270px;
     left: 145px;
     color:white;
@@ -379,14 +385,83 @@ img {
 }
 .titleModal {
 
-    font-size: 5em;
+    float: left;
+    font-size: 4em;
     margin: 0;
+    width: 70%;
+}
+.durationModal {
+
+    float: right;
+    text-align: left;
+    font-size: 1.5em;
+    width: 30%;
+    padding-top: 1.5em;
+    margin: 0;
+
+}
+.genreModal {
+    
+    font-size: 1.5em;
+    width: 40%;
+    padding-top: 3em;
+}
+.yearModal {
+    
+    float: left;
+    font-size: 1.5em;
+    width: 40%;
+    padding: 0;
+    margin: 0;
+}
+.etoiles {
+
+    width: 22px;
+}
+.imdbModal {
+    
+    font-size: 1em;
+    float: right;
+    text-align: center;
+    width: 60%;
+    padding: 0;
+    margin: 0;
+}
+.texteImdb {
+
+    font-size: 1.5em;
+    display: inline;
+    margin-right: 1em;
+}
+.ratedModal {
+    
+    font-size: 1.5em;
+    width: 70%;
+    padding-top: 2em;
+    margin: 0;
+}
+.countriesModal {
+    
+    font-size: 1.5em;
+    width: 70%;
+    padding-top: 1em;
+    margin: 0;
+}
+.directorModal {
+    
+    font-size: 1.5em;
     width: 90%;
+    line-height: 150%;
+    padding-top: 1em;
+    margin: 0;
 }
 .texteModal {
 
-    font-size: 2em;
-    width: 80%;
+    font-size: 1.5em;
+    width: 90%;
+    padding-top: 1em;
+    margin: 0;
+    line-height: 150%;
 }
 
  /*--------------------------------------------------------------------------------The Modal (background)------------------------------------------------------------------------------- */
@@ -407,6 +482,7 @@ img {
 
     color: #aaa;
     float: right;
+    font-family: Arial, Helvetica, sans-serif;
     padding-right: 10px;
     font-size: 35px;
     font-weight: bold;
